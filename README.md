@@ -1,6 +1,4 @@
-# edu-spring-restfulwebservice
-Starlight&Storm 教育資料
-「Spring MVC - RESTful Webサービス編」演習題材
+# 「Spring MVC - RESTful Webサービス編」演習題材
 ・前提条件：Javaの経験があること
 ・受講日数：1日
 ・テキスト：PDF（別途送付）
