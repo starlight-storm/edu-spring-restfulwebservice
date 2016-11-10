@@ -1,5 +1,6 @@
 # 「Spring MVC - RESTful Webサービス編」演習題材
-・前提条件：Javaの経験があること<br>
+・内容：Spring初心者向け。Spring MVCを使ったRESTful Webサービス開発<br>
+・前提条件：Javaの経験があること。Spring4入門を受講済みであることが好ましい<br>
 ・受講日数：1日<br>
 ・テキスト：PDF（別途送付）<br>
 ・受講料：10名様まで25万円<br>
