@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -26,7 +27,7 @@ public class EmployeeRestController {
 	// Advance REST ClientでURLにhttp://localhost:8080/v1/employees/, POST,
 	// Data Formに入力データを設定（ex: name 斎藤, mail saito@sample.jp）
 	@RequestMapping(method = RequestMethod.POST) // Spring4.3からは@PostMapping
-	public ResponseEntity<Employee> create(@Valid Employee emp, UriComponentsBuilder uriBuilder) {
+	public ResponseEntity<Employee> create(@RequestBody @Valid Employee emp, UriComponentsBuilder uriBuilder) {
 		
 		employeeService.create(emp);
 
