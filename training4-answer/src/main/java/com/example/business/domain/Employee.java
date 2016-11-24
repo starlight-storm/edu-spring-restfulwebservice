@@ -18,6 +18,15 @@ public class Employee {
 	@NotNull
 	@Email
 	private String mail;
+	
+	public Employee(){}
+	
+	// Unitテスト用に作りました
+	public Employee(int employeeId, String name, String mail) {
+		this.employeeId = employeeId;
+		this.name = name;
+		this.mail = mail;
+	}
 
 	public void setEmployeeId(int employeeId) {
 		this.employeeId = employeeId;

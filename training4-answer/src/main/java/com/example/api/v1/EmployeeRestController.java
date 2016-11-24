@@ -9,11 +9,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
@@ -32,14 +34,14 @@ public class EmployeeRestController {
 	EmployeeService employeeService;
 
 	// Advance REST ClientでURLにhttp://localhost:8080/v1/employees/, GET,
-	@RequestMapping(method = RequestMethod.GET) // Spring4.3からは@GetMapping
+	@GetMapping
 	public List<Employee> findAll() {
 		List<Employee> employees = employeeService.findAll();
         return employees;
 	}
 	
 	// Advance REST ClientでURLにhttp://localhost:8080/v1/employees/{0|1}, GET
-	@RequestMapping(value = "/{employeeId}", method = RequestMethod.GET) // Spring4.3からは@GetMapping
+	@GetMapping(value = "/{employeeId}") // Spring4.3からは@GetMapping
 	@ResponseStatus(value = HttpStatus.OK)
 	public Employee findById(@PathVariable int employeeId) {
 		Employee emp = employeeService.findById(employeeId);
@@ -48,14 +50,14 @@ public class EmployeeRestController {
 	}
 	
 	// Advance REST ClientでURLにhttp://localhost:8080/v1/employees/{0|1}, DELETE
-	@RequestMapping(value = "/{employeeId}", method = RequestMethod.DELETE) // Spring4.3からは@DeleteMapping
+	@DeleteMapping(value = "/{employeeId}")
 	public Employee delete(@PathVariable int employeeId) {
 		throw new EmployeeDeleteException("消せません");
 	}
 
 	// Advance REST ClientでURLにhttp://localhost:8080/v1/employees/, POST,
 	// Data Formに入力データを設定（ex: name 斎藤, mail saito@sample.jp）
-	@RequestMapping(method = RequestMethod.POST) // Spring4.3からは@PostMapping
+	@PostMapping
 	public ResponseEntity<Employee> create(@RequestBody @Valid Employee emp, UriComponentsBuilder uriBuilder) {
 		
 		employeeService.create(emp);
