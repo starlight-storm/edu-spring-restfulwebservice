@@ -84,8 +84,8 @@ public class TrainingApplicationTests {
 	public void test_Post_Ok() throws Exception {
 		Employee saitou = new Employee(2, "斎藤", "saitou@sample.jp");
 		mvc.perform(post("/v1/employees")
-				.contentType(TestUtil.APPLICATION_JSON_UTF8)
-                .content(TestUtil.convertObjectToJsonBytes(saitou)))
+				.contentType(TestHelper.APPLICATION_JSON_UTF8)
+                .content(TestHelper.convertObjectToJsonBytes(saitou)))
 		    .andExpect(status().isCreated());
 	}
 }
