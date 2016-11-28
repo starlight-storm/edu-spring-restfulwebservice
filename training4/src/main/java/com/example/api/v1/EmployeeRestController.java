@@ -71,12 +71,12 @@ public class EmployeeRestController {
 	}
 	
 	// エラーハンドラ
-	// 演習4 TODO：EmployeeNotFoundExceptionが発生したら、404になるようなアノテーションを記述しなさい
+	// TODO 演習4 EmployeeNotFoundExceptionが発生したら、404になるようなアノテーションを記述しなさい
     RestControllerError handleOrderException(EmployeeNotFoundException e) {
         return new RestControllerError(e.getMessage(), "http://localhost:8080/v1/employees");
     }
     
-	// 演習2オプション TODO：全件検索
+	// TODO 演習4(オプション) 全件検索
 	// Advance REST ClientでURLにhttp://localhost:8080/v1/employees/, GET,
 
 }

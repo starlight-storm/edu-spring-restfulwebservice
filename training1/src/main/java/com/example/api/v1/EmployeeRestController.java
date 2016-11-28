@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import com.example.business.domain.Company;
 import com.example.business.domain.Employee;
 
-// 演習1 TODO: 必要なアノテーションを記述しなさい
+// TODO 演習1 必要なアノテーションを記述しなさい
 public class EmployeeRestController {
 	
 	// Advance REST ClientでURLにhttp://localhost:8080/v1/employee, GET

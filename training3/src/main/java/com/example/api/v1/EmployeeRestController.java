@@ -42,9 +42,9 @@ public class EmployeeRestController {
                 emp, headers, HttpStatus.CREATED);
 	}
 	
-	// 演習2オプション TODO：全件検索
+	// TODO 演習3(オプション) 全件検索
 	// Advance REST ClientでURLにhttp://localhost:8080/v1/employees/, GET,
 	
-	// 演習2オプション TODO：EMPLOYEE_ID検索
+	// TODO 演習3(オプション) EMPLOYEE_ID検索
 	// Advance REST ClientでURLにhttp://localhost:8080/v1/employees/{0|1}, GET
 }

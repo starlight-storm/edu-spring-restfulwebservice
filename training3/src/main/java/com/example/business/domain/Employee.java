@@ -7,10 +7,10 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 public class Employee {
 	private int employeeId;
 
-	// 演習3 TODO: 必要なアノテーションを記述しなさい
+	// TODO 演習3 必要なアノテーションを記述しなさい
 	private String name;
 	
-	// 演習3 TODO: 必要なアノテーションを記述しなさい
+	// TODO 演習3 必要なアノテーションを記述しなさい
 	private String mail;
 
 	public void setEmployeeId(int employeeId) {

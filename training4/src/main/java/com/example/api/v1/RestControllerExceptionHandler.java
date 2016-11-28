@@ -23,12 +23,12 @@ public class RestControllerExceptionHandler {
         return new RestControllerError(e.getMessage(), "http://localhost:8080/v1/employees");
     }
 	
-	// 演習4 TODO：EmployeeDeleteExceptionが発生したら、404になるようなアノテーションを記述しなさい
+	// TODO 演習4 EmployeeDeleteExceptionが発生したら、404になるようなアノテーションを記述しなさい
     RestControllerError notFoundException(EmployeeDeleteException e) {
         return new RestControllerError(e.getMessage(), "http://localhost:8080/v1/employees");
     }
 	
-	// 演習4 TODO：BindExceptionが発生したら、400になるようなアノテーションを記述しなさい
+	// TODO 演習4 BindExceptionが発生したら、400になるようなアノテーションを記述しなさい
     List<RestControllerError> bindException(BindException e) {
 		List<RestControllerError> errors = new ArrayList<RestControllerError>();
 		  for(ObjectError err : e.getAllErrors()){
