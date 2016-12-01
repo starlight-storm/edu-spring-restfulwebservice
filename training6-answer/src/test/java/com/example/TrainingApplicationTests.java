@@ -41,7 +41,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 @SpringBootTest
 @FixMethodOrder(MethodSorters.NAME_ASCENDING) // テストを順番通りに実施する
 public class TrainingApplicationTests {
-	private static final String outputDirectory = "/Users/hase/adoc";
+	private static final String outputDirectory = "target/generated-snippets";
 	@Rule
 	public final JUnitRestDocumentation restDocumentation = new JUnitRestDocumentation(outputDirectory);
 	private RestDocumentationResultHandler documentationHandler;
@@ -60,7 +60,7 @@ public class TrainingApplicationTests {
 
 	@Before
 	public void setUp() throws Exception {
-		documentationHandler = document("{method-name}",
+		documentationHandler = document("{methodName}",
 				preprocessRequest(prettyPrint()),
 				preprocessResponse(prettyPrint()));
 
@@ -82,7 +82,7 @@ public class TrainingApplicationTests {
 		mvc.perform(get("/v1/employees/{id}", 0))
 		    .andExpect(status().isOk())
 			.andExpect(content().json(mapper.writeValueAsString(tanaka)))
-			.andDo(document("test_-get_0_-ok", pathParameters( 
+			.andDo(document("test_Get_0_Ok", pathParameters( 
 					parameterWithName("id").description("従業員番号"))));
 	}
 
