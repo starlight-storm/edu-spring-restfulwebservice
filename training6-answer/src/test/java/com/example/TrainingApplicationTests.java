@@ -1,7 +1,6 @@
 package com.example;
 
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document;
-import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.documentationConfiguration;
 import static org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders.get;
 import static org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders.post;
 import static org.springframework.restdocs.operation.preprocess.Preprocessors.preprocessRequest;
@@ -14,24 +13,24 @@ import static org.springframework.restdocs.request.RequestDocumentation.pathPara
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.header;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-import static org.springframework.test.web.servlet.setup.MockMvcBuilders.webAppContextSetup;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Before;
 import org.junit.FixMethodOrder;
-import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.MethodSorters;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.restdocs.AutoConfigureRestDocs;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.restdocs.JUnitRestDocumentation;
+import org.springframework.boot.test.context.TestConfiguration;
+import org.springframework.context.annotation.Bean;
 import org.springframework.restdocs.mockmvc.RestDocumentationResultHandler;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.web.context.WebApplicationContext;
 
 import com.example.api.v1.RestControllerError;
 import com.example.business.domain.Employee;
@@ -40,35 +39,22 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @FixMethodOrder(MethodSorters.NAME_ASCENDING) // テストを順番通りに実施する
+@AutoConfigureMockMvc
+@AutoConfigureRestDocs("target/generated-snippets")
 public class TrainingApplicationTests {
-	private static final String outputDirectory = "target/generated-snippets";
-	@Rule
-	public final JUnitRestDocumentation restDocumentation = new JUnitRestDocumentation(outputDirectory);
-	private RestDocumentationResultHandler documentationHandler;
-	
-	@Autowired
-	private WebApplicationContext webApplicationContext;
 
 	@Autowired
 	private ObjectMapper mapper;
-	
+
+	@Autowired
 	private MockMvc mvc;
-	
+
 	private Employee tanaka;
 	private Employee suzuki;
 	private List<Employee> employees;
 
 	@Before
 	public void setUp() throws Exception {
-		documentationHandler = document("{methodName}",
-				preprocessRequest(prettyPrint()),
-				preprocessResponse(prettyPrint()));
-
-		mvc = webAppContextSetup(webApplicationContext)
-				.apply(documentationConfiguration(this.restDocumentation))
-				.alwaysDo(this.documentationHandler)
-				.build();
-		
 		// テストデータ
 		this.tanaka = new Employee(0, "田中", "tanaka@sample.com");
 		this.suzuki = new Employee(1, "鈴木", "suzuki@sample.com");
@@ -82,7 +68,7 @@ public class TrainingApplicationTests {
 		mvc.perform(get("/v1/employees/{id}", 0))
 		    .andExpect(status().isOk())
 			.andExpect(content().json(mapper.writeValueAsString(tanaka)))
-			.andDo(document("test_Get_0_Ok", pathParameters( 
+			.andDo(document("test_Get_0_Ok", pathParameters(
 					parameterWithName("id").description("従業員番号"))));
 	}
 
@@ -111,4 +97,14 @@ public class TrainingApplicationTests {
 		    .andExpect(header().string("Location", "http://localhost:8080/v1/employees/2"))
 		    .andExpect(content().json(mapper.writeValueAsString(saitou)));
 	}
+
+    @TestConfiguration
+    static class RestDocsConfiguration {
+        @Bean
+        public RestDocumentationResultHandler restDocumentation() {
+            return document("{methodName}",
+                    preprocessRequest(prettyPrint()),
+                    preprocessResponse(prettyPrint()));
+        }
+    }
 }

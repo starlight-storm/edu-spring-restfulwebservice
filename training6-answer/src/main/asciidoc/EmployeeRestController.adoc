@@ -7,7 +7,7 @@ include::{snippets}/test_Get_0_Ok/path-parameters.adoc[]
 
 === Example (Ok)
 
-==== Request (row)
+==== Request (HTTP)
 include::{snippets}/test_Get_0_Ok/http-request.adoc[]
 
 ==== Request (curl)
@@ -21,7 +21,7 @@ include::{snippets}/test_Get_0_Ok/http-response.adoc[]
 
 === Example (NotFound)
 
-==== Request (row)
+==== Request (HTTP)
 include::{snippets}/test_Get_99_NotFound/http-request.adoc[]
 
 ==== Request (curl)
@@ -37,7 +37,7 @@ include::{snippets}/test_Get_99_NotFound/http-response.adoc[]
 
 === Example
 
-==== Request (row)
+==== Request (HTTP)
 include::{snippets}/test_Get_All_Ok/http-request.adoc[]
 
 ==== Request (curl)
@@ -53,7 +53,7 @@ include::{snippets}/test_Get_All_Ok/http-response.adoc[]
 
 === Example
 
-==== Request (row)
+==== Request (HTTP)
 include::{snippets}/test_Post_Ok/http-request.adoc[]
 
 ==== Request (curl)
