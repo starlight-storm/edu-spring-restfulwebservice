@@ -5,7 +5,6 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.header;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-import static org.springframework.test.web.servlet.setup.MockMvcBuilders.webAppContextSetup;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,10 +15,10 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.MethodSorters;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.web.context.WebApplicationContext;
 
 import com.example.api.v1.RestControllerError;
 import com.example.business.domain.Employee;
@@ -27,14 +26,14 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
+@AutoConfigureMockMvc
 @FixMethodOrder(MethodSorters.NAME_ASCENDING) // テストを順番通りに実施する
 public class TrainingApplicationTests {
-	@Autowired
-	private WebApplicationContext webApplicationContext;
 
 	@Autowired
 	private ObjectMapper mapper;
 	
+	@Autowired
 	private MockMvc mvc;
 	
 	private Employee tanaka;
@@ -43,11 +42,6 @@ public class TrainingApplicationTests {
 
 	@Before
 	public void setUp() throws Exception {
-		mvc = webAppContextSetup(webApplicationContext).build();
-		// Controllerだけなら「MockMvcBuilders.standaloneSetup(new
-		// EmployeeRestController()).build();」
-		// その場合は、Service以下はインスタンス化されないので、別途MockBeanが必要
-		
 		// テストデータ
 		this.tanaka = new Employee(0, "田中", "tanaka@sample.com");
 		this.suzuki = new Employee(1, "鈴木", "suzuki@sample.com");
