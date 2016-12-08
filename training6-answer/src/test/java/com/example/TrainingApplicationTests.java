@@ -38,9 +38,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-@FixMethodOrder(MethodSorters.NAME_ASCENDING) // テストを順番通りに実施する
 @AutoConfigureMockMvc
 @AutoConfigureRestDocs("target/generated-snippets")
+@FixMethodOrder(MethodSorters.NAME_ASCENDING) // テストを順番通りに実施する
 public class TrainingApplicationTests {
 
 	@Autowired
