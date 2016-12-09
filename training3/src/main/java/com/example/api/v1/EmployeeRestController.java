@@ -5,8 +5,6 @@ import java.net.URI;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -31,15 +29,14 @@ public class EmployeeRestController {
 		
 		employeeService.create(emp);
 
-        URI location = uriBuilder.path("v1/employees/{id}")
-                        .buildAndExpand(emp.getEmployeeId())
-                        .toUri();
+        URI location = uriBuilder
+        		.path("v1/employees/{id}")
+                .buildAndExpand(emp.getEmployeeId())
+                .toUri();
 
-        HttpHeaders headers = new HttpHeaders();
-        headers.setLocation(location);
-
-        return new ResponseEntity<>(
-                emp, headers, HttpStatus.CREATED);
+        return ResponseEntity
+        		.created(location)
+        		.body(emp);
 	}
 	
 	// TODO 演習3(オプション) 全件検索
