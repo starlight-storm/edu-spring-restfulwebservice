@@ -16,7 +16,7 @@ public class EmployeeRestController {
 	EmployeeService employeeService;
 	
 	// Advance REST ClientでURLにhttp://localhost:8080/v1/employees/, POST,
-	// Data Formに入力データを設定（ex: name 斎藤, mail saito@sample.jp）
+	// Row Payloadに入力データを設定（ex: {"name":"斎藤", "mail":"saito@sample.jp"} ）
 	// TODO 演習2 必要なアノテーションを記述しなさい
 	public ResponseEntity<Employee> create(Employee emp, UriComponentsBuilder uriBuilder) {
 		

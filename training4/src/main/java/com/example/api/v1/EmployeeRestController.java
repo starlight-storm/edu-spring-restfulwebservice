@@ -52,7 +52,7 @@ public class EmployeeRestController {
 	}
 
 	// Advance REST ClientでURLにhttp://localhost:8080/v1/employees/, POST,
-	// Data Formに入力データを設定（ex: name 斎藤, mail saito@sample.jp）
+	// Row Payloadに入力データを設定（ex: {"name":"斎藤", "mail":"saito@sample.jp"} ）
 	@RequestMapping(method = RequestMethod.POST) // Spring4.3からは@PostMapping
 	public ResponseEntity<Employee> create(@RequestBody @Valid Employee emp, UriComponentsBuilder uriBuilder) {
 		
