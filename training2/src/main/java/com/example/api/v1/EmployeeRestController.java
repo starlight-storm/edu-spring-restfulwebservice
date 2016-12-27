@@ -32,8 +32,10 @@ public class EmployeeRestController {
 	
 	// TODO 演習2(オプション) 全件検索
 	// Advance REST ClientでURLにhttp://localhost:8080/v1/employees/, GET,
+	// EmployeeServiceのfindAllを呼べばOK
 	
 	// TODO 演習2(オプション) EMPLOYEE_ID検索
 	// Advance REST ClientでURLにhttp://localhost:8080/v1/employees/{0|1}, GET
+	// EmployeeServiceのfindById(int id)を呼べばOK
 
 }
