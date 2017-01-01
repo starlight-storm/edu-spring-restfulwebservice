@@ -13,7 +13,7 @@ import com.example.business.domain.Employee;
 // TODO 演習1 必要なアノテーションを記述しなさい
 public class EmployeeRestController {
 	
-	// Advance REST ClientでURLにhttp://localhost:8080/v1/employee, GET
+	// Advance REST ClientでURLにhttp://localhost:8080/api/v1/employee, GET
 	@GetMapping //Spring4.3からは@GetMapping @RequestMapping(method = RequestMethod.GET)
 	@ResponseStatus(HttpStatus.OK)
 	public List<Employee> findAll() {

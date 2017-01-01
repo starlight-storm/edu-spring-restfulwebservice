@@ -19,13 +19,13 @@ import com.example.business.domain.Employee;
 import com.example.business.service.EmployeeService;
 
 @RestController
-@RequestMapping("/v1/employees")
+@RequestMapping("/api/v1/employees")
 public class EmployeeRestController {
 
 	@Autowired
 	EmployeeService employeeService;
 	
-	// Advance REST ClientでURLにhttp://localhost:8080/v1/employees/, POST,
+	// Advance REST ClientでURLにhttp://localhost:8080/api/v1/employees/, POST,
 	// Row Payloadに入力データを設定（ex: {"name":"斎藤", "mail":"saito@sample.jp"} ）
 	@PostMapping
 	public ResponseEntity<Employee> create(@RequestBody Employee emp, UriComponentsBuilder uriBuilder) {
@@ -33,7 +33,7 @@ public class EmployeeRestController {
 		employeeService.create(emp);
 
         URI location = uriBuilder
-        		.path("v1/employees/{id}")
+        		.path("api/v1/employees/{id}")
                 .buildAndExpand(emp.getEmployeeId())
                 .toUri();
 
@@ -42,14 +42,14 @@ public class EmployeeRestController {
         		.body(emp);
 	}
 	
-	// Advance REST ClientでURLにhttp://localhost:8080/v1/employees/, GET,
+	// Advance REST ClientでURLにhttp://localhost:8080/api/v1/employees/, GET,
 	@GetMapping
 	public List<Employee> findAll() {
 		List<Employee> employees = employeeService.findAll();
         return employees;
 	}
 	
-	// Advance REST ClientでURLにhttp://localhost:8080/v1/employees/{0|1}, GET
+	// Advance REST ClientでURLにhttp://localhost:8080/api/v1/employees/{0|1}, GET
 	@GetMapping(value = "/{id}")
 	@ResponseStatus(value = HttpStatus.OK)
 	public Employee findById(@PathVariable int id) {

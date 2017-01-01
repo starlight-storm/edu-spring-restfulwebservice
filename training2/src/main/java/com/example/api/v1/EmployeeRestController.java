@@ -15,14 +15,14 @@ public class EmployeeRestController {
 	@Autowired
 	EmployeeService employeeService;
 	
-	// Advance REST ClientでURLにhttp://localhost:8080/v1/employees/, POST,
+	// Advance REST ClientでURLにhttp://localhost:8080/api/v1/employees/, POST,
 	// Row Payloadに入力データを設定（ex: {"name":"斎藤", "mail":"saito@sample.jp"} ）
 	// TODO 演習2 必要なアノテーションを記述しなさい
 	public ResponseEntity<Employee> create(Employee emp, UriComponentsBuilder uriBuilder) {
 		
 		employeeService.create(emp);
 
-        URI location = uriBuilder.path("/v1/employees/{id}")
+        URI location = uriBuilder.path("/api/v1/employees/{id}")
                         .buildAndExpand(emp.getEmployeeId())
                         .toUri();
 
@@ -31,11 +31,11 @@ public class EmployeeRestController {
 	}
 	
 	// TODO 演習2(オプション) 全件検索
-	// Advance REST ClientでURLにhttp://localhost:8080/v1/employees/, GET,
+	// Advance REST ClientでURLにhttp://localhost:8080/api/v1/employees/, GET,
 	// EmployeeServiceのfindAllを呼べばOK
 	
 	// TODO 演習2(オプション) EMPLOYEE_ID検索
-	// Advance REST ClientでURLにhttp://localhost:8080/v1/employees/{0|1}, GET
+	// Advance REST ClientでURLにhttp://localhost:8080/api/v1/employees/{0|1}, GET
 	// EmployeeServiceのfindById(int id)を呼べばOK
 
 }

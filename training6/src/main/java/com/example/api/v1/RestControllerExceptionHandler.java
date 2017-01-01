@@ -9,21 +9,23 @@ import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
-import common.example.common.exception.EmployeeDeleteException;
+import com.example.common.exception.EmployeeDeleteException;
 
 @RestControllerAdvice
 public class RestControllerExceptionHandler {
 
+	private static final String HTTP_LOCALHOST_8080_V1_EMPLOYEES = "http://localhost:8080/api/v1/employees";
+
 	@org.springframework.web.bind.annotation.ExceptionHandler({ RuntimeException.class })
     @ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR)
     RestControllerError notFoundException(RuntimeException e) {
-        return new RestControllerError(e.getMessage(), "http://localhost:8080/v1/employees");
+        return new RestControllerError(e.getMessage(), HTTP_LOCALHOST_8080_V1_EMPLOYEES);
     }
 	
 	@org.springframework.web.bind.annotation.ExceptionHandler({ EmployeeDeleteException.class })
     @ResponseStatus(value = HttpStatus.NOT_FOUND)
     RestControllerError notFoundException(EmployeeDeleteException e) {
-        return new RestControllerError(e.getMessage(), "http://localhost:8080/v1/employees");
+        return new RestControllerError(e.getMessage(), HTTP_LOCALHOST_8080_V1_EMPLOYEES);
     }
 	
 	@org.springframework.web.bind.annotation.ExceptionHandler({ BindException.class })
@@ -32,7 +34,7 @@ public class RestControllerExceptionHandler {
 		List<RestControllerError> errors = new ArrayList<RestControllerError>();
 		  for(ObjectError err : e.getAllErrors()){
 		      errors.add(new RestControllerError(err.getDefaultMessage(),
-		    		  "http://localhost:8080/v1/employees"));
+		    		  HTTP_LOCALHOST_8080_V1_EMPLOYEES));
 		  }
         return errors;
     }

@@ -1,4 +1,4 @@
-package common.example.common.exception;
+package com.example.common.exception;
 
 public class EmployeeNotFoundException extends RuntimeException {
 	public EmployeeNotFoundException(String message) {

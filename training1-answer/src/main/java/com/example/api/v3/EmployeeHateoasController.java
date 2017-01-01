@@ -16,11 +16,11 @@ import com.example.business.domain.Company;
 import com.example.business.domain.Employee;
 
 @RestController
-@RequestMapping("/v3/employees")
+@RequestMapping("/api/v3/employees")
 public class EmployeeHateoasController {
 
 	// *** HATEOAS用に変更 ***
-	// Advance REST ClientでURLにhttp://localhost:8080/v3/employee, GET
+	// Advance REST ClientでURLにhttp://localhost:8080/api/v3/employee, GET
 	@GetMapping //Spring4.3からは@GetMapping @RequestMapping(method = RequestMethod.GET)
 	public ResponseEntity<Employee> findAll() {
 		List<Employee> empList = new ArrayList<Employee>();
