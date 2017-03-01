@@ -53,22 +53,22 @@ public class TrainingApplicationTests {
 
 	@Test
 	public void test_Get_0_Ok() throws Exception {
-		mvc.perform(get("/v1/employees/0"))
+		mvc.perform(get("/api/v1/employees/0"))
 		    .andExpect(status().isOk())
 			.andExpect(content().json(mapper.writeValueAsString(tanaka)));
 	}
 
 	@Test
 	public void test_Get_99_NotFound() throws Exception {
-		RestControllerError e = new RestControllerError("そんな人はいません", "http://localhost:8080/v1/employees");
-		mvc.perform(get("/v1/employees/99"))
+		RestControllerError e = new RestControllerError("そんな人はいません", "http://localhost:8080/api/v1/employees");
+		mvc.perform(get("/api/v1/employees/99"))
 		    .andExpect(status().isNotFound())
 			.andExpect(content().json(mapper.writeValueAsString(e)));
 	}
 
 	@Test
 	public void test_Get_All_Ok() throws Exception {
-		mvc.perform(get("/v1/employees"))
+		mvc.perform(get("/api/v1/employees"))
 		    .andExpect(status().isOk())
 			.andExpect(content().json(mapper.writeValueAsString(employees)));
 	}
@@ -76,11 +76,11 @@ public class TrainingApplicationTests {
 	@Test
 	public void test_Post_Ok() throws Exception {
 		Employee saitou = new Employee(2, "斎藤", "saitou@sample.jp");
-		mvc.perform(post("/v1/employees")
+		mvc.perform(post("/api/v1/employees")
 				.contentType(TestHelper.APPLICATION_JSON_UTF8)
                 .content(TestHelper.convertObjectToJsonBytes(saitou)))
 		    .andExpect(status().isCreated())
-		    .andExpect(header().string("Location", "http://localhost:8080/v1/employees/2"))
+		    .andExpect(header().string("Location", "http://localhost:8080/api/v1/employees/2"))
 		    .andExpect(content().json(mapper.writeValueAsString(saitou)));
 	}
 }
