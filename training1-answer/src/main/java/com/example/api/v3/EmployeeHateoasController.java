@@ -20,7 +20,7 @@ import com.example.business.domain.Employee;
 public class EmployeeHateoasController {
 
 	// *** HATEOAS用に変更 ***
-	// Advance REST ClientでURLにhttp://localhost:8080/api/v3/employee, GET
+	// Advance REST ClientでURLにhttp://localhost:8080/api/v3/employees, GET
 	@GetMapping //Spring4.3からは@GetMapping @RequestMapping(method = RequestMethod.GET)
 	public ResponseEntity<Employee> findAll() {
 		List<Employee> empList = new ArrayList<Employee>();

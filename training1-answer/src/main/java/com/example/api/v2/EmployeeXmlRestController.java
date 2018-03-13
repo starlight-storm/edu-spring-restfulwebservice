@@ -14,7 +14,7 @@ import com.example.business.domain.EmployeeList;
 @RequestMapping("/api/v2/employees")
 public class EmployeeXmlRestController {
 	
-	// Advance REST ClientでURLにhttp://localhost:8080/api/v2/employee, GET
+	// Advance REST ClientでURLにhttp://localhost:8080/api/v2/employees, GET
 	@GetMapping //Spring4.3からは@GetMapping @RequestMapping(method = RequestMethod.GET)
 	@ResponseStatus(HttpStatus.OK)
 	public EmployeeList findAll() {
