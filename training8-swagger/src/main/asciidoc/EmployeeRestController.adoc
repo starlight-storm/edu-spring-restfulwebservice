@@ -1,0 +1,66 @@
+= EmployeeRestController
+
+== findById
+
+=== Request path parameters
+include::{snippets}/test_Get_0_Ok/path-parameters.adoc[]
+
+=== Example (Ok)
+
+==== Request (HTTP)
+include::{snippets}/test_Get_0_Ok/http-request.adoc[]
+
+==== Request (curl)
+include::{snippets}/test_Get_0_Ok/curl-request.adoc[]
+
+==== Request (HTTPie)
+include::{snippets}/test_Get_0_Ok/httpie-request.adoc[]
+
+==== Response
+include::{snippets}/test_Get_0_Ok/http-response.adoc[]
+
+=== Example (NotFound)
+
+==== Request (HTTP)
+include::{snippets}/test_Get_99_NotFound/http-request.adoc[]
+
+==== Request (curl)
+include::{snippets}/test_Get_99_NotFound/curl-request.adoc[]
+
+==== Request (HTTPie)
+include::{snippets}/test_Get_99_NotFound/httpie-request.adoc[]
+
+==== Response
+include::{snippets}/test_Get_99_NotFound/http-response.adoc[]
+
+== findAll
+
+=== Example
+
+==== Request (HTTP)
+include::{snippets}/test_Get_All_Ok/http-request.adoc[]
+
+==== Request (curl)
+include::{snippets}/test_Get_All_Ok/curl-request.adoc[]
+
+==== Request (HTTPie)
+include::{snippets}/test_Get_All_Ok/httpie-request.adoc[]
+
+==== Response
+include::{snippets}/test_Get_All_Ok/http-response.adoc[]
+
+== create
+
+=== Example
+
+==== Request (HTTP)
+include::{snippets}/test_Post_Ok/http-request.adoc[]
+
+==== Request (curl)
+include::{snippets}/test_Post_Ok/curl-request.adoc[]
+
+==== Request (HTTPie)
+include::{snippets}/test_Post_Ok/httpie-request.adoc[]
+
+==== Response
+include::{snippets}/test_Post_Ok/http-response.adoc[]
